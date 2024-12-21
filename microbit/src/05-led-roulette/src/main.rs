@@ -16,11 +16,15 @@ fn main() -> ! {
     let mut timer = Timer::new(board.TIMER0);
 
     board.display_pins.col1.set_low().unwrap();
-    board.display_pins.row1.set_high().unwrap();
+    let mut row1 = board.display_pins.row1;
 
     // infinite loop; just so we don't leave this stack frame
     loop {
+        row1.set_low().unwrap();
+        rprintln!("Dark!");
         timer.delay_ms(1000u16);
-        rprintln!("1000 ms passed");
+        row1.set_high().unwrap();
+        rprintln!("Light!");
+        timer.delay_ms(1000u16);
     }
 }
