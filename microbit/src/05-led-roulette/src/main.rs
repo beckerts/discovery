@@ -22,9 +22,9 @@ fn main() -> ! {
     loop {
         row1.set_low().unwrap();
         rprintln!("Dark!");
-        timer.delay_ms(1000u16);
+        timer.delay_ms(500u16);
         row1.set_high().unwrap();
         rprintln!("Light!");
-        timer.delay_ms(1000u16);
+        timer.delay_ms(500u16);
     }
 }
