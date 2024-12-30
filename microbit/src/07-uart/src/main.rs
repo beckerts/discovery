@@ -50,12 +50,7 @@ fn main() -> ! {
         UartePort::new(serial)
     };
 
-    let quickbrown = b"The quick brown fox jumps over the lazy dog.\r\n";
-
-    for &byte in quickbrown.iter() {
-        nb::block!(serial.write(byte)).unwrap();
-    }
-    
+    write!(serial, "The quick brown fox jumps over the lazy dog.\r\n").unwrap();    
     nb::block!(serial.flush()).unwrap();
 
     loop {}
